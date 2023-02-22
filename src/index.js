@@ -1,15 +1,143 @@
-const Manager = require("./models/Manager");
-const Engineer = require("./models/Engineer");
-const Intern = require("./models/Intern");
-const inquirer = require("inquirer");
-const path = require("path");
-const fs = require("fs");
+import Manager from "./models/Manager.js";
+import Engineer from "./models/Engineer.js";
+import Intern from "./models/Intern.js";
+import inquirer from "inquirer";
+import path from "path";
+import fs from "fs";
+import * as url from 'url';
+import generateHtmlPage from "../src/helpers/generateHtmlPage.js";
 
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html");
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const OUTPUT_PATH = path.resolve(__dirname, "..", "output");
+const HTML_FILE_PATH = path.join(OUTPUT_PATH, "team.html");
 
-const generateHtmlPage = require("./helpers/generateHtmlPage.js");
+/// APP LOOP
 
+/// GENERATE
+
+function createTeamPage() {
+    const team = [];
+    const html = generateHtmlPage(team)
+    fs.mkdirSync(OUTPUT_PATH)
+    fs.writeFileSync(HTML_FILE_PATH, html)
+    // open html
+}
+
+createTeamPage()
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
+inquirer.prompt([
+    {
+        type: "list",
+        name: "main-menu",
+        choices: [
+            // manager-details 
+            "Set manager", // condition: no manager
 
+            // manager-details 
+            "Change manager", // condition: has manager
+
+            // manage-team
+            "Manage team members", // condition: has manager
+
+            "View Team", // condition: has manager && has employee (intern/engineer)
+
+            "Exit",
+        ],
+        message: 'What would you like to do?',
+    },
+
+]);
+
+const baseEmployeePrompts = role => ([
+    // name
+    {
+        type: "input",
+        name: "name",
+        message: `${role} name`,
+    },
+    //id,
+    {
+        type: "input",
+        name: "id",
+        message: `${role} employee id`,
+    },
+    //emails
+    {
+        type: "input",
+        name: "email",
+        message: `${role} email address`,
+    },
+]);
+
+// manager-details
+inquirer.prompt([
+    ...baseEmployeePrompts("Manager"),
+    {
+        type: "input",
+        name: "office-number",
+        message: `${role} office number`,
+    },
+])
+
+// manage-team
+inquirer.prompt([
+    {
+        type: "input",
+        name: "employee-type-menu",
+        choices: [
+            // add-member
+            "Add team member",
+            // remove-member
+            "Remove team member", // condition: has team members (intern/engineers)
+            "< Back"
+        ],
+        message: "What would you like to do?",
+    },
+])
+
+// add-member
+inquirer.prompt([
+    {
+        type: "input",
+        name: "employee-type",
+        choices: [
+            "Engineer", // add-engineer
+            "Intern", // add-intern
+        ],
+        message: "What is the role of the new team member?",
+    },
+])
+
+// remove-member
+inquirer.prompt([
+    {
+        type: "input",
+        name: "employee-type",
+        choices: [
+            // dynamic list of employees available (intern/engineer only)
+        ],
+        message: "Which employee should be removed",
+    },
+])
+
+// add-engineer
+inquirer.prompt([
+    ...baseEmployeePrompts("Engineer"),
+    {
+        type: "input",
+        name: "gitHub",
+        message: "what is your GitHub",
+    },
+
+])
+
+// add-intern
+inquirer.prompt([
+    ...baseEmployeePrompts("Intern"),
+    {
+        type: "input",
+        name: "School",
+        message: "what school are you from",
+    },
+])

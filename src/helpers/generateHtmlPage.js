@@ -1,6 +1,5 @@
 // creates the team
 const generateTeam = team => {
-
     // creates the manager html
     const generateManager = manager => {
         return `
@@ -59,7 +58,6 @@ const generateTeam = team => {
     };
 
     const html = [];
-
     html.push(team
         .filter(employee => employee.getRole() === "Manager")
         .map(manager => generateManager(manager))
@@ -115,3 +113,5 @@ const generateHtmlPage = team => {
         </html>
     `;
 };
+
+export default generateHtmlPage;

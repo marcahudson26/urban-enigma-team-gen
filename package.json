@@ -4,8 +4,10 @@
   "description": "Application to create html of team profiles",
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "jest"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
