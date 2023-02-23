@@ -7,13 +7,12 @@
     "start": "node src/index.js",
     "test": "jest"
   },
-  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.4.3"
   },
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "inquirer": "^8.0.0"
   }
 }

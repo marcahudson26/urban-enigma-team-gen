@@ -114,4 +114,4 @@ const generateHtmlPage = team => {
     `;
 };
 
-export default generateHtmlPage;
+module.exports = generateHtmlPage;

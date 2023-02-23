@@ -1,13 +1,11 @@
-import Manager from "./models/Manager.js";
-import Engineer from "./models/Engineer.js";
-import Intern from "./models/Intern.js";
-import inquirer from "inquirer";
-import path from "path";
-import fs from "fs";
-import * as url from 'url';
-import generateHtmlPage from "../src/helpers/generateHtmlPage.js";
+const Manager = require("./models/Manager.js");
+const Engineer = require("./models/Engineer.js");
+const Intern = require("./models/Intern.js");
+const inquirer = require("inquirer");
+const path = require("path");
+const fs = require("fs");
+const generateHtmlPage = require("../src/helpers/generateHtmlPage.js");
 
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const OUTPUT_PATH = path.resolve(__dirname, "..", "output");
 const HTML_FILE_PATH = path.join(OUTPUT_PATH, "team.html");
 
