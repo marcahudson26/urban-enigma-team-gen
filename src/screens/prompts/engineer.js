@@ -8,7 +8,7 @@ module.exports = async () => {
         {
             type: "input",
             name: "github",
-            message: `Engineer's github`,
+            message: `Engineer's github : `,
         },
 
     ])

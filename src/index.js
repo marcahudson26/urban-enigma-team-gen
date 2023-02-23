@@ -1,3 +1,4 @@
+// var commandLinePong = require("command-line-pong")
 const open = require('open');
 const createTeamPage = require("./helpers/createTeamPage.js")
 // classes
@@ -62,7 +63,7 @@ async function app() {
             continue;
         }
 
-        if (action === "View Team") {
+        if (action === "Save / View Team") {
             const url = createTeamPage(team);
 
             await open(url);
@@ -137,3 +138,6 @@ async function app() {
 }
 
 module.exports = app;
+
+
+

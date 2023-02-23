@@ -6,13 +6,13 @@ const generateTeam = team => {
             <div class="card employee-card">
                 <div class="card-header">
                     <h2 class="card-title">${manager.getName()}</h2>
-                    <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${manager.getRole()}</h3>
+                    <h3 class="card-title"><img class="employee-icon" src="../assets/wolf-pack-battalion.svg" alt=""/> ${manager.getRole()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
                         <li class="list-group-item">ID: ${manager.getId()}</li>
                         <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
-                        <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
+                        <li class="list-group-item"> <a href="tel:${manager.getOfficeNumber()}"> Office number: ${manager.getOfficeNumber()}</li></a>
                     </ul>
                 </div>
             </div>
@@ -25,7 +25,7 @@ const generateTeam = team => {
             <div class="card employee-card">
                 <div class="card-header">
                     <h2 class="card-title">${engineer.getName()}</h2>
-                    <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
+                    <h3 class="card-title"><img class="employee-icon" src="../assets/engineer.svg" alt=""/> ${engineer.getRole()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -44,7 +44,7 @@ const generateTeam = team => {
         <div class="card employee-card">
             <div class="card-header">
                 <h2 class="card-title">${intern.getName()}</h2>
-                <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
+                <h3 class="card-title"><img class="employee-icon" src="../assets/intern.svg" alt=""/> ${intern.getRole()}</h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
@@ -90,15 +90,16 @@ const generateHtmlPage = team => {
             <title>My Team</title>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
                 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="../styles/styles.css">
             <script src="https://kit.fontawesome.com/c502137733.js"></script>
         </head>
 
         <body>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 jumbotron mb-3 team-heading">
-                        <h1 class="text-center">My Team</h1>
+                    <div class="col-12 team-heading">
+                    <img class="logo" src="../assets/urban-enigma.png" alt="">
+                        <h1 class="text-center">Meet the Team</h1>
                     </div>
                 </div>
             </div>

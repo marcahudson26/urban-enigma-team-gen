@@ -8,7 +8,7 @@ module.exports = async () => {
         {
             type: "input",
             name: "officeNumber",
-            message: `Manager's office number`,
+            message: `Manager's office contact number : `,
         },
 
     ])

@@ -3,18 +3,18 @@ module.exports = role => ([
     {
         type: "input",
         name: "name",
-        message: `${role} name`,
+        message: `${role} name : `,
     },
     //id,
     {
         type: "input",
         name: "id",
-        message: `${role} employee id`,
+        message: `${role} employee id : `,
     },
     //emails
     {
         type: "input",
         name: "email",
-        message: `${role} email address`,
+        message: `${role} email address : `,
     },
 ]);

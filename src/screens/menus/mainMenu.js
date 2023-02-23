@@ -14,7 +14,7 @@ module.exports = async (hasManager, hasNonManagerEmployee) => {
         choices.push("Change Manager", "Manage Team Members")
 
         if (hasNonManagerEmployee) {
-            choices.push("View Team", new inquirer.Separator(), "Take a break?")
+            choices.push("Save / View Team", new inquirer.Separator(), "Take a break?")
         }
     }
     choices.push(new inquirer.Separator(), "Exit")
