@@ -7,8 +7,13 @@ const Intern = require("./models/Intern.js");
 const generateHtmlPage = require("./helpers/generateHtmlPage.js");
 // menus
 const showMainMenu = require("./screens/menus/mainMenu.js");
+const showManageTeamMenu = require("./screens/menus/manageTeamMenu.js");
+const showEmployeeTypeMenu = require("./screens/menus/employeeTypeMenu.js");
+const showRemoveMemberMenu = require("./screens/menus/removeMemberMenu.js");
 // prompts
 const showManagerPrompt = require("./screens/prompts/manager.js");
+const showInternPrompt = require("./screens/prompts/intern.js");
+const showEngineerPrompt = require("./screens/prompts/engineer.js");
 // messages
 const showLogoMessage = require("./screens/messages/logo.js")
 const showWelcomeMessage = require("./screens/messages/welcome.js")
@@ -16,8 +21,9 @@ const showWelcomeMessage = require("./screens/messages/welcome.js")
 async function app() {
     await showWelcomeMessage();
 
-    const team = [];
-    let action = "mainMenu";
+    let team = [];
+
+    let action = "Main Menu";
 
     while (true) {
         console.clear()
@@ -25,14 +31,6 @@ async function app() {
 
         const manager = team.find(employee => employee.getRole() === "Manager")
         const teamMembers = team.filter(employee => employee.getRole() !== "Manager")
-
-        if (action === "mainMenu") {
-            const answer = await showMainMenu(!!manager, teamMembers.length > 0);
-
-            // next action will be the option selected
-            action = answer.mainMenu;
-            continue;
-        }
 
         if (action === "Set Manager") {
             const { name, id, email, officeNumber } = await showManagerPrompt();
@@ -43,7 +41,24 @@ async function app() {
             )
 
             // next action will be main menu
-            action = "mainMenu";
+            action = "Main Menu";
+            continue;
+        }
+
+        if (action === "Change Manager") {
+            const { name, id, email, officeNumber } = await showManagerPrompt();
+
+            // remove existing manager from team
+            const managerIndex = team.findIndex(member => member.getRole() === "Manager");
+            team.splice(managerIndex, 1);
+
+            // add manager back into team
+            team.push(
+                new Manager(name, id, email, officeNumber)
+            )
+
+            // next action will be main menu
+            action = "Main Menu";
             continue;
         }
 
@@ -52,133 +67,73 @@ async function app() {
 
             await open(url);
             // next action will be main menu
-            action = "mainMenu";
+            action = "Main Menu";
             continue;
+        }
+
+        if (action === "Main Menu") {
+            const answer = await showMainMenu(!!manager, teamMembers.length > 0);
+            action = answer.mainMenu;
+            continue;
+        }
+
+        if (action === "Manage Team Members") {
+            const answer = await showManageTeamMenu(teamMembers.length > 0);
+            action = answer.manageTeamMenu;
+            continue;
+        }
+
+        if (action === "Add Team Member") {
+            const answer = await showEmployeeTypeMenu();
+            action = answer.employeeTypeMenu;
+            continue;
+        }
+
+        if (action === "Engineer") {
+            const { name, id, email, github } = await showEngineerPrompt();
+            team.push(
+                new Engineer(name, id, email, github)
+            )
+            action = "Manage Team Members";
+            continue;
+        }
+
+        if (action === "Intern") {
+            const { name, id, email, school } = await showInternPrompt();
+            team.push(
+                new Intern(name, id, email, school)
+            )
+            action = "Manage Team Members";
+            continue;
+        }
+
+        if (action === "Remove Team Member") {
+            const newTeam = await showRemoveMemberMenu(teamMembers);
+
+            team = [
+                manager,
+                ...newTeam
+            ]
+
+            action = "Manage Team Members";
+            continue;
+        }
+
+        if (action === "< Back") {
+            action = "Main Menu";
+            continue;
+        }
+
+        if (action === "Take a break?") {
+            return
         }
 
         if (action === "Exit") {
             return
         }
 
-        action = "mainMenu";
+        action = "Main Menu";
     }
 }
 
 module.exports = app;
-
-// // TODO: Write Code to gather information about the development team members, and render the HTML file.
-// inquirer.prompt([
-//     {
-//         type: "list",
-//         name: "main-menu",
-//         choices: [
-//             // manager-details
-//             "Set manager", // condition: no manager
-
-//             // manager-details
-//             "Change manager", // condition: has manager
-
-//             // manage-team
-//             "Manage team members", // condition: has manager
-
-//             "View Team", // condition: has manager && has employee (intern/engineer)
-
-//             "Exit",
-//         ],
-//         message: 'What would you like to do?',
-//     },
-
-// ]);
-
-// const baseEmployeePrompts = role => ([
-//     // name
-//     {
-//         type: "input",
-//         name: "name",
-//         message: `${role} name`,
-//     },
-//     //id,
-//     {
-//         type: "input",
-//         name: "id",
-//         message: `${role} employee id`,
-//     },
-//     //emails
-//     {
-//         type: "input",
-//         name: "email",
-//         message: `${role} email address`,
-//     },
-// ]);
-
-// // manager-details
-// inquirer.prompt([
-//     ...baseEmployeePrompts("Manager"),
-//     {
-//         type: "input",
-//         name: "office-number",
-//         message: `${role} office number`,
-//     },
-// ])
-
-// // manage-team
-// inquirer.prompt([
-//     {
-//         type: "input",
-//         name: "employee-type-menu",
-//         choices: [
-//             // add-member
-//             "Add team member",
-//             // remove-member
-//             "Remove team member", // condition: has team members (intern/engineers)
-//             "< Back"
-//         ],
-//         message: "What would you like to do?",
-//     },
-// ])
-
-// // add-member
-// inquirer.prompt([
-//     {
-//         type: "input",
-//         name: "employee-type",
-//         choices: [
-//             "Engineer", // add-engineer
-//             "Intern", // add-intern
-//         ],
-//         message: "What is the role of the new team member?",
-//     },
-// ])
-
-// // remove-member
-// inquirer.prompt([
-//     {
-//         type: "input",
-//         name: "employee-type",
-//         choices: [
-//             // dynamic list of employees available (intern/engineer only)
-//         ],
-//         message: "Which employee should be removed",
-//     },
-// ])
-
-// // add-engineer
-// inquirer.prompt([
-//     ...baseEmployeePrompts("Engineer"),
-//     {
-//         type: "input",
-//         name: "gitHub",
-//         message: "what is your GitHub",
-//     },
-
-// ])
-
-// // add-intern
-// inquirer.prompt([
-//     ...baseEmployeePrompts("Intern"),
-//     {
-//         type: "input",
-//         name: "School",
-//         message: "what school are you from",
-//     },
-// ])

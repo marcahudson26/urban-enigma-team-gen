@@ -2,13 +2,12 @@ const inquirer = require("inquirer")
 const baseEmployeePrompts = require("./base.js");
 
 module.exports = async () => {
-    // manager-details
     return await inquirer.prompt([
-        ...baseEmployeePrompts("Manager"),
+        ...baseEmployeePrompts("Intern"),
         {
             type: "input",
-            name: "officeNumber",
-            message: `Manager's office number`,
+            name: "school",
+            message: `Intern's school`,
         },
 
     ])

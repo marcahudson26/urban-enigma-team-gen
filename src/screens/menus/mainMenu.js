@@ -1,7 +1,7 @@
 
 const inquirer = require("inquirer");
 
-module.exports = async function showMainMenu(hasManager, hasNonManagerEmployee) {
+module.exports = async (hasManager, hasNonManagerEmployee) => {
     const choices = [];
 
     if (!hasManager) {
@@ -13,11 +13,11 @@ module.exports = async function showMainMenu(hasManager, hasNonManagerEmployee) 
         // manager-details
         choices.push("Change Manager", "Manage Team Members")
 
-        //if (hasNonManagerEmployee) {
-        choices.push("View Team")
-        //}
+        if (hasNonManagerEmployee) {
+            choices.push("View Team", new inquirer.Separator(), "Take a break?")
+        }
     }
-    choices.push("Exit")
+    choices.push(new inquirer.Separator(), "Exit")
 
     return await inquirer.prompt([
         {
