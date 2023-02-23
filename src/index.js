@@ -16,9 +16,16 @@ const HTML_FILE_PATH = path.join(OUTPUT_PATH, "team.html");
 /// GENERATE
 
 function createTeamPage() {
-    const team = [];
+    if (!fs.existsSync(OUTPUT_PATH)) {
+        fs.mkdirSync(OUTPUT_PATH);
+    }
+
+    const team = [
+        new Manager("Marc", 1, "marc@work.com", "0123456789"),
+        new Engineer("Matt", 2, "matt@work.com", "Matt-Jones-Developer"),
+        new Intern("Chloe", 3, "chloe@work.com", "Sheffield")
+    ];
     const html = generateHtmlPage(team)
-    fs.mkdirSync(OUTPUT_PATH)
     fs.writeFileSync(HTML_FILE_PATH, html)
     // open html
 }
