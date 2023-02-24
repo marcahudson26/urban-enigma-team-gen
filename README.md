@@ -48,5 +48,7 @@ it is a great application and its great to have it in my project
 ## Link to deployed application
 https://marcahudson26.github.io/urban-enigma-team-gen/
 
-## Screenshots/ Videos
+## Screenshots
 ![Screenshot](./docs/assets/urbanscreenshot.png)
+
+## Video

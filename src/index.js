@@ -1,4 +1,3 @@
-// var commandLinePong = require("command-line-pong")
 const open = require('open');
 const createTeamPage = require("./helpers/createTeamPage.js")
 // classes
