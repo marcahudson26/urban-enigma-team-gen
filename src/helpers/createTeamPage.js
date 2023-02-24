@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const generateHtmlPage = require("./generateHtmlPage.js")
 
-const OUTPUT_PATH = path.resolve(__dirname, "..", "output");
+const OUTPUT_PATH = path.resolve(__dirname, "../..", "docs");
 const HTML_FILE_PATH = path.join(OUTPUT_PATH, "index.html");
 
 module.exports = (team) => {
