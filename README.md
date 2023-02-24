@@ -10,8 +10,8 @@
 
 
 * [Application Tests](#tests-instructions)
-* [Questions](#questions)
 * [Application contributors](#contributors)
+* [Questions](#questions)
 * [Link to deployed application](#link-to-deployed-application)
 * [Screenshots of deployed application](#screenshots)
 
@@ -29,6 +29,8 @@ npm i
 ```
 npm run start 
 ```
+## Tests instructions
+npm run test
 
 ## contributions
 
@@ -37,9 +39,6 @@ this isn't my work this was made by Liam boom https://github.com/liambloom
 it is a great application and its great to have it in my project 
 
 
-
-## Tests instructions
-npm run test
 
 ## Questions
 - Message me at: [marcahudson26](https://github.com/marcahudson26)
