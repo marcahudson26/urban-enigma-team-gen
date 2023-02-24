@@ -126,7 +126,8 @@ async function app() {
         }
 
         if (action === "Take a break?") {
-            return
+            process.exit(1);
+            return;
         }
 
         if (action === "Exit") {
