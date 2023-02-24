@@ -4,7 +4,7 @@ const fs = require("fs");
 const generateHtmlPage = require("./generateHtmlPage.js")
 
 const OUTPUT_PATH = path.resolve(__dirname, "..", "output");
-const HTML_FILE_PATH = path.join(OUTPUT_PATH, "team.html");
+const HTML_FILE_PATH = path.join(OUTPUT_PATH, "index.html");
 
 module.exports = (team) => {
     if (!fs.existsSync(OUTPUT_PATH)) {
