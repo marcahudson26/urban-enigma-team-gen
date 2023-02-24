@@ -12,7 +12,7 @@ const generateTeam = team => {
                     <ul class="list-group">
                         <li class="list-group-item">ID: ${manager.getId()}</li>
                         <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
-                        <li class="list-group-item"> <a href="tel:${manager.getOfficeNumber()}"> Office number: ${manager.getOfficeNumber()}</li></a>
+                        <li class="list-group-item"> Office number: <a href="tel:${manager.getOfficeNumber()}">${manager.getOfficeNumber()}</a></li>
                     </ul>
                 </div>
             </div>
