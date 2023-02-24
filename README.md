@@ -49,4 +49,4 @@ it is a great application and its great to have it in my project
 *** fill in here ***
 
 ## Screenshots/ Videos
-![Screenshot](./assets/urbanscreenshot.png)
+![Screenshot](./docs/assets/urbanscreenshot.png)

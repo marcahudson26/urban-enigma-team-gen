@@ -6,7 +6,7 @@ const generateTeam = team => {
             <div class="card employee-card">
                 <div class="card-header">
                     <h2 class="card-title">${manager.getName()}</h2>
-                    <h3 class="card-title"><img class="employee-icon" src="../assets/wolf-pack-battalion.svg" alt=""/> ${manager.getRole()}</h3>
+                    <h3 class="card-title"><img class="employee-icon" src="./assets/wolf-pack-battalion.svg" alt=""/> ${manager.getRole()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -25,7 +25,7 @@ const generateTeam = team => {
             <div class="card employee-card">
                 <div class="card-header">
                     <h2 class="card-title">${engineer.getName()}</h2>
-                    <h3 class="card-title"><img class="employee-icon" src="../assets/engineer.svg" alt=""/> ${engineer.getRole()}</h3>
+                    <h3 class="card-title"><img class="employee-icon" src="./assets/engineer.svg" alt=""/> ${engineer.getRole()}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -44,7 +44,7 @@ const generateTeam = team => {
         <div class="card employee-card">
             <div class="card-header">
                 <h2 class="card-title">${intern.getName()}</h2>
-                <h3 class="card-title"><img class="employee-icon" src="../assets/intern.svg" alt=""/> ${intern.getRole()}</h3>
+                <h3 class="card-title"><img class="employee-icon" src="./assets/intern.svg" alt=""/> ${intern.getRole()}</h3>
             </div>
             <div class="card-body">
                 <ul class="list-group">
@@ -98,7 +98,7 @@ const generateHtmlPage = team => {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 team-heading">
-                    <img class="logo" src="../assets/urban-enigma.png" alt="">
+                    <img class="logo" src="./assets/urban-enigma.png" alt="">
                         <h1 class="text-center">Meet the Team</h1>
                     </div>
                 </div>
