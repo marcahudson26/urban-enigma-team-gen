@@ -1,9 +1,9 @@
 const open = require('open');
 const createTeamPage = require("./helpers/createTeamPage.js")
 // classes
-const Manager = require("./models/Manager.js");
-const Engineer = require("./models/Engineer.js");
-const Intern = require("./models/Intern.js");
+const Manager = require("./lib/Manager.js");
+const Engineer = require("./lib/Engineer.js");
+const Intern = require("./lib/Intern.js");
 const generateHtmlPage = require("./helpers/generateHtmlPage.js");
 // menus
 const showMainMenu = require("./screens/menus/mainMenu.js");
